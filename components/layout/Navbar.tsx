@@ -43,8 +43,8 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'py-4 backdrop-blur-lg bg-opacity-80' : 'py-8 bg-transparent'}`}>
-      <div className="container mx-auto px-6 flex justify-between items-center">
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled || mobileMenuOpen ? 'py-4 backdrop-blur-lg bg-white/10' : 'py-6 md:py-8 bg-transparent'}`}>
+      <div className="container mx-auto px-6 flex justify-between items-center relative z-50">
         
         {/* Logo */}
         <motion.a 
@@ -105,10 +105,13 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Toggle */}
         <div className="md:hidden flex items-center gap-4">
-            <button onClick={toggleDimension} className="text-xs font-bold uppercase">
+            <button onClick={toggleDimension} className={`text-xs font-bold uppercase ${dimension === 'void' ? 'text-white' : 'text-black'}`}>
                 {dimension === 'growth' ? 'VOID' : 'GROWTH'}
             </button>
-            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2">
+            <button 
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
+                className={`p-2 ${dimension === 'void' ? 'text-white' : 'text-black'}`}
+            >
                 {mobileMenuOpen ? <X /> : <Menu />}
             </button>
         </div>
@@ -119,9 +122,9 @@ export const Navbar: React.FC = () => {
         {mobileMenuOpen && (
             <motion.div 
                 initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
+                animate={{ opacity: 1, height: '100vh' }}
                 exit={{ opacity: 0, height: 0 }}
-                className={`md:hidden absolute w-full px-6 py-8 border-b ${dimension === 'void' ? 'bg-propello-dim border-gray-800' : 'bg-white border-gray-100'}`}
+                className={`md:hidden fixed top-0 left-0 w-full pt-24 px-6 z-40 ${dimension === 'void' ? 'bg-propello-dim' : 'bg-white'}`}
             >
                 <div className="flex flex-col gap-6">
                     {navLinks.map((link) => (
@@ -129,14 +132,14 @@ export const Navbar: React.FC = () => {
                             key={link.name} 
                             href={link.href} 
                             onClick={(e) => handleScrollTo(e, link.href)}
-                            className="text-lg font-medium"
+                            className={`text-2xl font-medium ${dimension === 'void' ? 'text-white' : 'text-black'}`}
                         >
                             {link.name}
                         </a>
                     ))}
                     <button 
                         onClick={(e) => handleScrollTo(e, '#contact')}
-                        className="w-full py-4 bg-propello-green text-black font-bold"
+                        className="w-full py-4 mt-4 bg-propello-green text-black font-bold rounded-xl"
                     >
                         Start Project
                     </button>

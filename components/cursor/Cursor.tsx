@@ -37,7 +37,7 @@ export const Cursor: React.FC = () => {
   }, [cursorX, cursorY]);
 
   return (
-    <>
+    <div className="hidden md:block">
       {/* Main Dot */}
       <motion.div
         className={`fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] mix-blend-difference flex items-center justify-center`}
@@ -69,6 +69,6 @@ export const Cursor: React.FC = () => {
          }}
          transition={{ type: "spring", stiffness: 100, damping: 20 }}
       />
-    </>
+    </div>
   );
 };

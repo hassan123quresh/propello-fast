@@ -6,7 +6,7 @@ export const CTA: React.FC = () => {
   const { dimension } = useDimension();
 
   return (
-    <section id="contact" className={`py-40 relative overflow-hidden flex items-center justify-center ${dimension === 'growth' ? 'bg-black text-white' : 'bg-propello-green text-black'}`}>
+    <section id="contact" className={`py-24 md:py-40 relative overflow-hidden flex items-center justify-center ${dimension === 'growth' ? 'bg-black text-white' : 'bg-propello-green text-black'}`}>
       
       {/* Background Animation */}
       <div className="absolute inset-0 z-0">
@@ -18,7 +18,7 @@ export const CTA: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-8xl font-bold mb-8 tracking-tighter"
+            className="text-4xl md:text-6xl lg:text-8xl font-bold mb-8 tracking-tighter"
         >
             Your competitors are online.<br/>
             <span className="font-serif italic font-light">The leaders stand apart.</span>
@@ -30,7 +30,7 @@ export const CTA: React.FC = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
         >
             <button 
-                className={`px-12 py-6 rounded-full text-xl font-bold transition-all hover:scale-105 active:scale-95 ${dimension === 'growth' ? 'bg-white text-black hover:bg-propello-green' : 'bg-black text-white hover:bg-white hover:text-black'}`}
+                className={`w-full sm:w-auto px-12 py-6 rounded-full text-lg md:text-xl font-bold transition-all hover:scale-105 active:scale-95 ${dimension === 'growth' ? 'bg-white text-black hover:bg-propello-green' : 'bg-black text-white hover:bg-white hover:text-black'}`}
                 data-hover="true"
             >
                 Start My Transformation

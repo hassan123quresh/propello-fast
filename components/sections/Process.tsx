@@ -13,11 +13,11 @@ export const Process: React.FC = () => {
   const { dimension } = useDimension();
 
   return (
-    <section id="process" className="py-32">
+    <section id="process" className="py-20 md:py-32">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold mb-20 text-center">How We Win</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 md:mb-20 text-center">How We Win</h2>
         
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8">
             {steps.map((step, i) => (
                 <motion.div 
                     key={i}
@@ -25,14 +25,14 @@ export const Process: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.2 }}
-                    className="relative group"
+                    className="relative group text-center md:text-left"
                 >
-                    <div className={`text-6xl font-bold mb-4 opacity-10 transition-opacity group-hover:opacity-30 ${dimension === 'growth' ? 'text-black' : 'text-propello-green'}`}>
+                    <div className={`text-5xl md:text-6xl font-bold mb-4 opacity-10 transition-opacity group-hover:opacity-30 ${dimension === 'growth' ? 'text-black' : 'text-propello-green'}`}>
                         {step.num}
                     </div>
-                    <div className={`w-full h-[1px] mb-8 ${dimension === 'growth' ? 'bg-gray-200' : 'bg-gray-800'}`} />
-                    <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
-                    <p className="opacity-70">{step.desc}</p>
+                    <div className={`w-full h-[1px] mb-6 md:mb-8 ${dimension === 'growth' ? 'bg-gray-200' : 'bg-gray-800'}`} />
+                    <h3 className="text-xl md:text-2xl font-bold mb-3">{step.title}</h3>
+                    <p className="opacity-70 text-sm md:text-base">{step.desc}</p>
                 </motion.div>
             ))}
         </div>
