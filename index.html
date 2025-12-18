@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Propello | The Future of Business</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              propello: {
+                green: '#00FF41',
+                dark: '#050505',
+                light: '#F4F4F5',
+                dim: '#111111'
+              }
+            },
+            fontFamily: {
+              sans: ['Space Grotesk', 'Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            },
+            animation: {
+              'spin-slow': 'spin 12s linear infinite',
+              'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Space Grotesk', sans-serif;
+        overflow-x: hidden;
+      }
+      .no-cursor {
+        cursor: none;
+      }
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #00FF41;
+      }
+
+      /* Magic Bento Styles */
+      :root {
+        --hue: 135; /* Propello Green Hue approx */
+        --sat: 100%;
+        --white: hsl(0, 0%, 100%);
+        --propello-green: #00FF41;
+        --propello-glow: rgba(0, 255, 65, 0.2);
+        --background-dark: #050505;
+      }
+
+      .card-grid {
+        display: grid;
+        gap: 1.5rem; /* Increased gap for cleaner look */
+        padding: 0;
+        width: 100%;
+      }
+
+      .magic-bento-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        min-height: 240px; /* Increased height */
+        width: 100%;
+        padding: 2rem;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.03);
+        font-weight: 300;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+
+        --glow-x: 50%;
+        --glow-y: 50%;
+        --glow-intensity: 0;
+        --glow-radius: 300px;
+        --glow-color: 0, 255, 65; /* Default Propello Green */
+      }
+
+      .magic-bento-card.light-mode {
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        color: #000;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      }
+      
+      .magic-bento-card.dark-mode {
+         background: rgba(255, 255, 255, 0.03);
+         border: 1px solid rgba(255, 255, 255, 0.1);
+         color: #fff;
+      }
+
+      .magic-bento-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .magic-bento-card__header,
+      .magic-bento-card__content {
+        display: flex;
+        position: relative;
+        z-index: 2; /* Ensure text is above particles */
+      }
+
+      .magic-bento-card__header {
+        gap: 0.75em;
+        justify-content: space-between;
+        margin-bottom: auto;
+      }
+
+      .magic-bento-card__content {
+        flex-direction: column;
+        margin-top: 1rem;
+      }
+
+      .magic-bento-card__label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        opacity: 0.7;
+      }
+
+      .magic-bento-card__title {
+        font-weight: 700;
+        font-size: 1.5rem;
+        margin: 0 0 0.5rem;
+        line-height: 1.1;
+      }
+
+      .magic-bento-card__description {
+        font-size: 1rem;
+        line-height: 1.5;
+        opacity: 0.8;
+      }
+
+      @media (max-width: 768px) {
+        .card-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (min-width: 769px) {
+        .card-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .card-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .magic-bento-card:nth-child(1) { grid-column: span 1; }
+        .magic-bento-card:nth-child(2) { grid-column: span 1; }
+        .magic-bento-card:nth-child(3) { grid-column: span 1; }
+      }
+
+      /* Border glow effect */
+      .magic-bento-card--border-glow::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        padding: 2px;
+        background: radial-gradient(
+          var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+          rgba(var(--glow-color), var(--glow-intensity)) 0%,
+          transparent 60%
+        );
+        border-radius: inherit;
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        pointer-events: none;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+      }
+
+      .particle-container {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .particle {
+         pointer-events: none;
+      }
+
+      .global-spotlight {
+        mix-blend-mode: screen;
+        will-change: transform, opacity;
+        z-index: 200 !important;
+        pointer-events: none;
+      }
+
+      .bento-section {
+        position: relative;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react/": "https://esm.sh/react@18.2.0/",
+    "react-dom": "https://esm.sh/react-dom@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "framer-motion": "https://esm.sh/framer-motion@10.16.4?external=react,react-dom",
+    "lucide-react": "https://esm.sh/lucide-react@0.292.0?external=react,react-dom",
+    "three": "https://esm.sh/three@0.160.0",
+    "three/": "https://esm.sh/three@0.160.0/",
+    "three/examples/jsm/environments/RoomEnvironment.js": "https://esm.sh/three@0.160.0/examples/jsm/environments/RoomEnvironment.js",
+    "lenis": "https://esm.sh/lenis@1.0.45",
+    "gsap": "https://esm.sh/gsap@3.12.5",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+</head>
+  <body class="bg-propello-light text-slate-900 transition-colors duration-700 ease-in-out selection:bg-propello-green selection:text-black no-cursor">
+    <div id="root"></div>
+  </body>
+</html>
