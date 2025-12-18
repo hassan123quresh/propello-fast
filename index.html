@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Propello | The Future of Business</title>
+    <meta name="description" content="A futuristic, high-performance business website with parallel dimension theming and ultra-smooth animations." />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -225,26 +226,25 @@
         position: relative;
       }
     </style>
-  <script type="importmap">
+<script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@18.2.0",
-    "react/": "https://esm.sh/react@18.2.0/",
-    "react-dom": "https://esm.sh/react-dom@18.2.0",
-    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
-    "framer-motion": "https://esm.sh/framer-motion@10.16.4?external=react,react-dom",
-    "lucide-react": "https://esm.sh/lucide-react@0.292.0?external=react,react-dom",
-    "three": "https://esm.sh/three@0.160.0",
-    "three/": "https://esm.sh/three@0.160.0/",
-    "three/examples/jsm/environments/RoomEnvironment.js": "https://esm.sh/three@0.160.0/examples/jsm/environments/RoomEnvironment.js",
-    "lenis": "https://esm.sh/lenis@1.0.45",
-    "gsap": "https://esm.sh/gsap@3.12.5",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "framer-motion": "https://esm.sh/framer-motion@^12.23.26",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "three/": "https://esm.sh/three@^0.182.0/",
+    "three": "https://esm.sh/three@^0.182.0",
+    "gsap": "https://esm.sh/gsap@^3.14.2",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
   <body class="bg-propello-light text-slate-900 transition-colors duration-700 ease-in-out selection:bg-propello-green selection:text-black no-cursor">
     <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>
