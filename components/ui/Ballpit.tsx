@@ -388,8 +388,8 @@ function onMouseLeave() {
 }
 
 function onTouchStart(e: TouchEvent) {
+  // Allow default behavior (scrolling)
   if (e.touches.length > 0) {
-    e.preventDefault();
     mousePosition.x = e.touches[0].clientX;
     mousePosition.y = e.touches[0].clientY;
 
@@ -409,8 +409,8 @@ function onTouchStart(e: TouchEvent) {
 }
 
 function onTouchMove(e: TouchEvent) {
+  // Allow default behavior (scrolling)
   if (e.touches.length > 0) {
-    e.preventDefault();
     mousePosition.x = e.touches[0].clientX;
     mousePosition.y = e.touches[0].clientY;
 
@@ -791,7 +791,7 @@ function createBallpit(canvas: HTMLCanvasElement, config: any = {}) {
   const intersectPoint = new Vector3();
   let paused = false;
 
-  canvas.style.touchAction = 'none';
+  canvas.style.touchAction = 'pan-y'; // ALLOW SCROLLING
   canvas.style.userSelect = 'none';
   canvas.style.webkitUserSelect = 'none';
 

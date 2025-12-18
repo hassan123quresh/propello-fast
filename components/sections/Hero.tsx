@@ -28,7 +28,7 @@ export const Hero: React.FC = () => {
     <section ref={ref} className="relative min-h-[100dvh] flex items-center justify-center pt-20 px-6 overflow-hidden">
       
       {/* Background Elements */}
-      <div className="absolute inset-0 w-full h-full z-0">
+      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none md:pointer-events-auto">
          {/* Ballpit Background - Full Opacity for clarity */}
          <div className="absolute inset-0">
            <Ballpit 

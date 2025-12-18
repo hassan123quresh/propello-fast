@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Propello | The Future of Business</title>
     <meta name="description" content="A futuristic, high-performance business website with parallel dimension theming and ultra-smooth animations." />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -35,9 +35,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
       body {
         font-family: 'Space Grotesk', sans-serif;
         overflow-x: hidden;
+        margin: 0;
+        padding: 0;
       }
       .no-cursor {
         cursor: none;
@@ -229,13 +234,13 @@
 <script type="importmap">
 {
   "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
     "framer-motion": "https://esm.sh/framer-motion@^12.23.26",
     "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "three/": "https://esm.sh/three@^0.182.0/",
     "three": "https://esm.sh/three@^0.182.0",
+    "three/": "https://esm.sh/three@^0.182.0/",
     "gsap": "https://esm.sh/gsap@^3.14.2",
     "vite": "https://esm.sh/vite@^7.3.0",
     "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
