@@ -634,7 +634,7 @@ class CustomMaterial extends MeshPhysicalMaterial {
       'void main() {',
       '\n        void RE_Direct_Scattering(const in IncidentLight directLight, const in vec2 uv, const in vec3 geometryPosition, const in vec3 geometryNormal, const in vec3 geometryViewDir, const in vec3 geometryClearcoatNormal, inout ReflectedLight reflectedLight) {\n          vec3 scatteringHalf = normalize(directLight.direction + (geometryNormal * thicknessDistortion));\n          float scatteringDot = pow(saturate(dot(geometryViewDir, -scatteringHalf)), thicknessPower) * thicknessScale;\n          #ifdef USE_COLOR\n            vec3 scatteringIllu = (scatteringDot + thicknessAmbient) * vColor;\n          #else\n            vec3 scatteringIllu = (scatteringDot + thicknessAmbient) * diffuse;\n          #endif\n          reflectedLight.directDiffuse += scatteringIllu * thicknessAttenuation * directLight.color;\n        }\n\n        void main() {\n      '
     );
-    const lightFragment = ShaderChunk.lights_fragment_begin.replaceAll(
+    const lightFragment = ShaderChunk.lights_fragment_begin.replace(
       'RE_Direct( directLight, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, material, reflectedLight );',
       '\n          RE_Direct( directLight, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, material, reflectedLight );\n          RE_Direct_Scattering(directLight, vUv, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, reflectedLight);\n        '
     );
@@ -815,10 +815,10 @@ function createBallpit(canvas: HTMLCanvasElement, config: any = {}) {
   function initialize(newConfig: any) {
     if (spheres) {
       render.clear();
-      render.scene.remove(spheres);
+      render.scene.remove(spheres as unknown as Object3D);
     }
     spheres = new Spheres(render.renderer, newConfig);
-    render.scene.add(spheres);
+    render.scene.add(spheres as unknown as Object3D);
   }
 
   render.onBeforeRender = (state) => {
