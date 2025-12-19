@@ -36,11 +36,17 @@ export const Cursor: React.FC = () => {
     };
   }, [cursorX, cursorY]);
 
+  // Determine colors based on dimension (explicit logic to avoid blend mode issues)
+  // Growth (Light Mode) -> Black Cursor
+  // Void (Dark Mode) -> Green Cursor
+  const dotColor = dimension === 'growth' ? '#000000' : '#00FF41';
+  const ringColor = dimension === 'growth' ? '#000000' : '#00FF41';
+
   return (
     <div className="hidden md:block">
-      {/* Main Dot */}
+      {/* Main Dot - Removed mix-blend-difference to fix white circle artifacts */}
       <motion.div
-        className={`fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] mix-blend-difference flex items-center justify-center`}
+        className={`fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] flex items-center justify-center`}
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
@@ -49,7 +55,7 @@ export const Cursor: React.FC = () => {
         <motion.div 
             animate={{ 
                 scale: isHovering ? 2.5 : 1,
-                backgroundColor: dimension === 'growth' ? '#ffffff' : '#00FF41' 
+                backgroundColor: dotColor 
             }}
             className="w-3 h-3 rounded-full"
         />
@@ -57,11 +63,11 @@ export const Cursor: React.FC = () => {
       
       {/* Trailing Ring */}
       <motion.div
-         className={`fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9998] border transition-colors duration-500`}
+         className={`fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9998] border border-solid transition-colors duration-500 bg-transparent`}
          style={{
            x: cursorXSpring,
            y: cursorYSpring,
-           borderColor: dimension === 'growth' ? '#000' : '#00FF41',
+           borderColor: ringColor,
            opacity: isHovering ? 0 : 0.5
          }}
          animate={{

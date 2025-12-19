@@ -17,7 +17,7 @@ import {
   SphereGeometry,
   AmbientLight,
   PointLight,
-  ACESFilmicToneMapping,
+  NoToneMapping,
   Raycaster,
   Plane,
   WebGLRendererParameters,
@@ -695,9 +695,9 @@ class Spheres extends (InstancedMesh as any) {
   }
 
   private initLights() {
-    this.ambientLight = new AmbientLight(this.config.ambientColor, this.config.ambientIntensity);
+    this.ambientLight = new AmbientLight(this.config.ambientColor, 2.0); // Boosted ambient
     this.add(this.ambientLight);
-    this.light = new PointLight(this.config.colors[0], this.config.lightIntensity);
+    this.light = new PointLight(this.config.colors[0], 500); // Boosted point light
     this.add(this.light);
   }
 
@@ -766,7 +766,8 @@ function createBallpit(canvas: HTMLCanvasElement, config: any = {}) {
   });
   
   let spheres: Spheres | undefined;
-  render.renderer.toneMapping = ACESFilmicToneMapping;
+  // Use NoToneMapping to preserve exact colors (fixes "dark green" issue)
+  render.renderer.toneMapping = NoToneMapping; 
   render.camera.position.set(0, 0, 20);
   render.camera.lookAt(0, 0, 0);
   render.cameraMaxAspect = 1.5;
