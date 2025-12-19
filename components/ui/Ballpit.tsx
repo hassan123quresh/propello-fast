@@ -200,13 +200,7 @@ class ThreeRender {
       this.size.wHeight = 2 * Math.tan(fovRad / 2) * this.camera.position.length();
       this.size.wWidth = this.size.wHeight * this.camera.aspect;
     } else {
-      // Assuming OrthographicCamera for fallback, though strictly typed as PerspectiveCamera above
-      // If Orthographic is needed, types should be adjusted.
-      // Keeping logic from original file.
-      /*
-      this.size.wHeight = this.camera.top - this.camera.bottom;
-      this.size.wWidth = this.camera.right - this.camera.left;
-      */
+      // Assuming OrthographicCamera for fallback
     }
   }
 
